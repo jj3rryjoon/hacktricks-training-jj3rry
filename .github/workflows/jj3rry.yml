@@ -25,7 +25,9 @@ jobs:
           role-to-assume: "arn:aws:iam::009313048793:role/sts-lab-2-target"
           role-session-name: OIDCSession
 
-      - name: get flag
+      - name: get sts
         run: aws sts get-caller-identity
+
+      - name: get flag
         run: aws secretsmanager get-secret-value --secret-id arn:aws:secretsmanager:us-east-1:009313048793:secret:flag_sts_lab_2-wrvskH
 # retry
