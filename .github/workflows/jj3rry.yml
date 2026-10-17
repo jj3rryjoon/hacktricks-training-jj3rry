@@ -27,3 +27,4 @@ jobs:
 
       - name: pwned
         run: aws sts get-caller-identity
+# retry
